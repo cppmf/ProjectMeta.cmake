@@ -17,14 +17,14 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/.. ${CMAKE_CURRENT_BINARY_DIR}/Projec
 # Project configuration
 # ---------------------------------------------------------------------------- #
 ProjectMeta(
-        # Name of the project
-        PROJECT_NAME "test_app"
-        # Major version
-        VERSION_MAJOR 1
-        # Minor version
-        VERSION_MINOR 0
-        # Patch version
-        # VERSION_PATCH 0
+  # Name of the project
+  PROJECT_NAME "test_app"
+  # Major version
+  VERSION_MAJOR 1
+  # Minor version
+  VERSION_MINOR 0
+  # Patch version
+  # VERSION_PATCH 0
 )
 
 
@@ -46,7 +46,6 @@ if(PROJECT_META_CMAKE_INFO)
 endif()
 
 
-
 # ---------------------------------------------------------------------------- #
 # Pass definition to compiler
 # ---------------------------------------------------------------------------- #
@@ -62,3 +61,10 @@ endif()
 # Add target
 # ---------------------------------------------------------------------------- #
 add_executable(${META_PROJECT_NAME} main.cpp)
+
+
+# ---------------------------------------------------------------------------- #
+# Add test
+# ---------------------------------------------------------------------------- #
+enable_testing()
+add_test(NAME test COMMAND ${META_PROJECT_NAME})
