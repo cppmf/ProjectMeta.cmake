@@ -15,18 +15,17 @@ First add GetCPM.cmake module :
 
 ```bash
 mkdir cmake
-wget -O cmake/CPM.cmake https://raw.githubusercontent.com/cppmf/GetCPM.cmake/master/GetCPM.cmake
+wget -O cmake/GetCPM.cmake https://raw.githubusercontent.com/cppmf/GetCPM.cmake/master/GetCPM.cmake
 ```
 
 Then add the following lines to the project's `CMakeLists.txt`.
 
 
 ```bash
-# include GetCPM.cmake module
-include(cmake/CPM.cmake)
+# include CPM.cmake module
+include(cmake/GetCPM.cmake)
 
-# add GitInfo.cmake and tell where to find the root project
-# by specifying the GIT_INFO_SOURCE_DIR variable.
+# add ProjectMeta.cmake
 CPMAddPackage(
   NAME ProjectMeta.cmake
   GITHUB_REPOSITORY cppmf/ProjectMeta.cmake
@@ -46,21 +45,43 @@ ProjectMeta(
 )
 ```
 
+## Available parameters
+
+List of available parameters while calling ProjectMeta function
+
+parameter | description
+---------|------------
+PROJECT_ID | project identifier
+PROJECT_NAME | project name
+PROJECT_DESCRIPTION | project description
+AUTHOR_ORGANIZATION | project
+AUTHOR_DOMAIN | project domain url
+AUTHOR_MAINTAINER | project maintainer
+VERSION_MAJOR | version major
+VERSION_MINOR | version minor
+VERSION_PATCH | version patch
+VERSION_REVISION | version revision
+VERSION | version
+VERSION_NAME | version name
+
 ## Available variables
 
 After calling ProjectMeta function, the following variables will be set
 
-variable | description
----------|------------
-META_PROJECT_ID | project identifier
-META_PROJECT_NAME | project name
-META_PROJECT_DESCRIPTION | project description
-META_AUTHOR_ORGANIZATION | project organisation
-META_AUTHOR_DOMAIN | project domain url
-META_AUTHOR_MAINTAINER | project maintainer
-META_VERSION_MAJOR | version major
-META_VERSION_MINOR | version minor
-META_VERSION_PATCH | version patch
-META_VERSION_REVISION | version revision
-META_VERSION | version (optional, will be built from version info if not set)
-META_VERSION_NAME | version name (optional, will be built from version info if not set)
+ !  | variable | description
+----|----------|------------
+[C] | META_PROJECT_ID | project identifier
+[*] | META_PROJECT_NAME | project name
+ -  | META_PROJECT_DESCRIPTION | project description
+ -  | META_AUTHOR_ORGANIZATION | project organization
+ -  | META_AUTHOR_DOMAIN | project domain url
+ -  | META_AUTHOR_MAINTAINER | project maintainer
+[*] | META_VERSION_MAJOR | version major
+[*] | META_VERSION_MINOR | version minor
+[C] | META_VERSION_PATCH | version patch
+[C] | META_VERSION_REVISION | version revision
+[C] | META_VERSION | version (optional, will be built from version info if not set)
+[C] | META_VERSION_NAME | version name (optional, will be built from version info if not set)
+
+[*] Mandatory meta data
+[C] Conditionals meta data which will be setup based on mandatory meta data.
