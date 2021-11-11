@@ -29,7 +29,6 @@ include(cmake/GetCPM.cmake)
 CPMAddPackage(
   NAME ProjectMeta.cmake
   GITHUB_REPOSITORY cppmf/ProjectMeta.cmake
-  VERSION 1.0.0
 )
 
 # then add meta data project before calling the project function

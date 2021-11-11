@@ -7,10 +7,11 @@
 # ---------------------------------------------------------------------------- #
 cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
+# Make use of GetCPM.cmake
+include(${CMAKE_CURRENT_LIST_DIR}/cmake/GetCPM.cmake)
 
-# Add the directory containing the main CMakeLists file
-# and declare the output directory
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/.. ${CMAKE_CURRENT_BINARY_DIR}/ProjectMetaCmake)
+# Add ProjectMeta.cmake package
+CPMAddPackage(NAME ProjectMeta.cmake SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
 
 
 # ---------------------------------------------------------------------------- #
@@ -18,7 +19,7 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/.. ${CMAKE_CURRENT_BINARY_DIR}/Projec
 # ---------------------------------------------------------------------------- #
 ProjectMeta(
   # Name of the project
-  PROJECT_NAME "test_app"
+  PROJECT_NAME "TestApp"
   # Major version
   VERSION_MAJOR 1
   # Minor version
@@ -42,7 +43,7 @@ project(
 # Display project meta data
 # ---------------------------------------------------------------------------- #
 if(PROJECT_META_CMAKE_INFO)
-  ProjectMetaInfo()
+  ProjectMetaReport()
 endif()
 
 
