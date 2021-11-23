@@ -33,8 +33,8 @@ ProjectMeta(
 # Project
 # ---------------------------------------------------------------------------- #
 project(
-  ${META_PROJECT_NAME}
-  VERSION ${META_VERSION}
+  ${PROJECT_NAME}
+  VERSION ${VERSION}
   LANGUAGES CXX
 )
 
@@ -50,22 +50,22 @@ endif()
 # ---------------------------------------------------------------------------- #
 # Pass definition to compiler
 # ---------------------------------------------------------------------------- #
-if(META_PROJECT_NAME)
-  add_definitions(-DMETA_PROJECT_NAME="${META_PROJECT_NAME}")
+if(PROJECT_NAME)
+  add_definitions(-DPROJECT_NAME="${PROJECT_NAME}")
 endif()
-if(META_VERSION)
-  add_definitions(-DMETA_VERSION="${META_VERSION}")
+if(VERSION)
+  add_definitions(-DVERSION="${VERSION}")
 endif()
 
 
 # ---------------------------------------------------------------------------- #
 # Add target
 # ---------------------------------------------------------------------------- #
-add_executable(${META_PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
 
 # ---------------------------------------------------------------------------- #
 # Add test
 # ---------------------------------------------------------------------------- #
 enable_testing()
-add_test(NAME test COMMAND ${META_PROJECT_NAME})
+add_test(NAME test COMMAND ${PROJECT_NAME})

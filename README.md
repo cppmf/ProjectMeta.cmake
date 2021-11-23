@@ -69,18 +69,18 @@ After calling ProjectMeta function, the following variables will be set
 
  !  | variable | description
 ----|----------|------------
-[C] | META_PROJECT_ID | project identifier
-[*] | META_PROJECT_NAME | project name
- -  | META_PROJECT_DESCRIPTION | project description
- -  | META_AUTHOR_ORGANIZATION | project organization
- -  | META_AUTHOR_DOMAIN | project domain url
- -  | META_AUTHOR_MAINTAINER | project maintainer
-[*] | META_VERSION_MAJOR | version major
-[*] | META_VERSION_MINOR | version minor
-[C] | META_VERSION_PATCH | version patch
-[C] | META_VERSION_REVISION | version revision
-[C] | META_VERSION | version (optional, will be built from version info if not set)
-[C] | META_VERSION_NAME | version name (optional, will be built from version info if not set)
+[C] | PROJECT_ID | project identifier
+[*] | PROJECT_NAME | project name
+ -  | PROJECT_DESCRIPTION | project description
+ -  | AUTHOR_ORGANIZATION | project organization
+ -  | AUTHOR_DOMAIN | project domain url
+ -  | AUTHOR_MAINTAINER | project maintainer
+[*] | VERSION_MAJOR | version major
+[*] | VERSION_MINOR | version minor
+[C] | VERSION_PATCH | version patch
+[C] | VERSION_REVISION | version revision
+[C] | VERSION | version (optional, will be built from version info if not set)
+[C] | VERSION_NAME | version name (optional, will be built from version info if not set)
 
 [*] Mandatory meta data
 [C] Conditionals meta data which will be setup based on mandatory meta data.
