@@ -29,6 +29,7 @@ include(cmake/GetCPM.cmake)
 CPMAddPackage(
   NAME ProjectMeta.cmake
   GITHUB_REPOSITORY cppmf/ProjectMeta.cmake
+  GIT_TAG 1.1.0
 )
 
 # then add meta data project before calling the project function
@@ -70,7 +71,9 @@ After calling ProjectMeta function, the following variables will be set
  !  | variable | description
 ----|----------|------------
 [C] | PROJECT_ID | project identifier
+[C] | PROJECT_ID_LOWER | project identifier in lower case
 [*] | PROJECT_NAME | project name
+[C] | PROJECT_NAME_LOWER | project name in lower case
  -  | PROJECT_DESCRIPTION | project description
  -  | AUTHOR_ORGANIZATION | project organization
  -  | AUTHOR_DOMAIN | project domain url

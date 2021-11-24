@@ -19,7 +19,7 @@ CPMAddPackage(NAME ProjectMeta.cmake SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
 # ---------------------------------------------------------------------------- #
 ProjectMeta(
   # Name of the project
-  PROJECT_NAME "TestApp"
+  PROJECT_NAME "Test-App"
   # Major version
   VERSION_MAJOR 1
   # Minor version

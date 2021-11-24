@@ -66,12 +66,20 @@ function(ProjectMeta)
   _check_and_set_optional_meta_data(META_AUTHOR_DOMAIN AUTHOR_DOMAIN)
   _check_and_set_optional_meta_data(META_AUTHOR_MAINTAINER AUTHOR_MAINTAINER)
 
+  # Project NAME (lower)
+  string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
+  _check_and_set_mandatory_meta_data(PROJECT_NAME_LOWER PROJECT_NAME_LOWER "Project name lower case")
+
   # Project ID
   if(NOT DEFINED META_PROJECT_ID)
     string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
     string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
   endif()
   _check_and_set_mandatory_meta_data(META_PROJECT_ID PROJECT_ID "Project ID")
+
+  # Project ID (lower)
+  string(TOLOWER ${PROJECT_ID} PROJECT_ID_LOWER)
+  _check_and_set_mandatory_meta_data(PROJECT_ID_LOWER PROJECT_ID_LOWER "Project ID lower case")
 
   # Project patch version
   if(NOT DEFINED META_VERSION_PATCH)
