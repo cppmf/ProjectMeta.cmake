@@ -29,14 +29,21 @@
 # This is the main function to call in project CMakeLists.txt
 function(ProjectMeta)
 
+  # Option overrides
+  set(options)
+  set(oneValueArgs
+        PROJECT_ID PROJECT_NAME PROJECT_DESCRIPTION
+        AUTHOR_ORGANIZATION AUTHOR_DOMAIN AUTHOR_MAINTAINER
+        VERSION_MAJOR VERSION_MINOR VERSION_PATCH VERSION_REVISION VERSION VERSION_NAME)
+  set(multiValueArgs)
+
   # Parsing ProjectMeta function arguments
-  cmake_parse_arguments(
-    META
-    ""
-    "PROJECT_ID;PROJECT_NAME;PROJECT_DESCRIPTION;AUTHOR_ORGANIZATION;AUTHOR_DOMAIN;AUTHOR_MAINTAINER;VERSION_MAJOR;VERSION_MINOR;VERSION_PATCH;VERSION_REVISION;VERSION;VERSION_NAME"
-    ""
-    ${ARGN}
-  )
+  cmake_parse_arguments(META "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+
+  # Check for unparsed arguments
+  if(META_UNPARSED_ARGUMENTS)
+    message(FATAL_ERROR "Unknown keywords given to ProjectMeta(): \"${META_UNPARSED_ARGUMENTS}\"")
+  endif()
 
   # Helper function to check if mandatory meta data exist
   function(_check_and_set_mandatory_meta_data meta name description)
@@ -48,9 +55,9 @@ function(ProjectMeta)
   endfunction()
 
   # Helper function to check if optional meta data exist
-  function(_check_and_set_optional_meta_data meta name)
+  function(_check_and_set_optional_meta_data meta name description)
     if(DEFINED ${meta})
-      set(${meta} ${${name}} CACHE INTERNAL "${description}")
+      set(${name} ${${meta}} CACHE INTERNAL "${description}")
     endif()
   endfunction()
 
@@ -61,10 +68,10 @@ function(ProjectMeta)
 
   # Check optional meta data
   _check_and_set_optional_meta_data(META_VERSION_PATCH VERSION_PATCH "Project patch version")
-  _check_and_set_optional_meta_data(META_PROJECT_DESCRIPTION PROJECT_DESCRIPTION)
-  _check_and_set_optional_meta_data(META_AUTHOR_ORGANIZATION AUTHOR_ORGANIZATION)
-  _check_and_set_optional_meta_data(META_AUTHOR_DOMAIN AUTHOR_DOMAIN)
-  _check_and_set_optional_meta_data(META_AUTHOR_MAINTAINER AUTHOR_MAINTAINER)
+  _check_and_set_optional_meta_data(META_PROJECT_DESCRIPTION PROJECT_DESCRIPTION "")
+  _check_and_set_optional_meta_data(META_AUTHOR_ORGANIZATION AUTHOR_ORGANIZATION "")
+  _check_and_set_optional_meta_data(META_AUTHOR_DOMAIN AUTHOR_DOMAIN "")
+  _check_and_set_optional_meta_data(META_AUTHOR_MAINTAINER AUTHOR_MAINTAINER "")
 
   # Project NAME (lower)
   string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
