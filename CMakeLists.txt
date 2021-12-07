@@ -32,7 +32,7 @@ function(ProjectMeta)
   # Option overrides
   set(options)
   set(oneValueArgs
-        PROJECT_ID PROJECT_NAME PROJECT_DESCRIPTION
+        PROJECT_ID PROJECT_NAME PROJECT_DESCRIPTION PROJECT_NAMESPACE
         AUTHOR_ORGANIZATION AUTHOR_DOMAIN AUTHOR_MAINTAINER
         VERSION_MAJOR VERSION_MINOR VERSION_PATCH VERSION_REVISION VERSION VERSION_NAME)
   set(multiValueArgs)
@@ -89,6 +89,13 @@ function(ProjectMeta)
   # Project description
   _check_and_set_optional_meta_data(META_PROJECT_DESCRIPTION PROJECT_DESCRIPTION "")
   _check_and_set_optional_meta_data(META_PROJECT_DESCRIPTION ${PROJECT_ID}_PROJECT_DESCRIPTION "")
+
+  # Project NAMESPACE
+  if(NOT DEFINED META_PROJECT_NAMESPACE)
+    string(TOLOWER ${META_PROJECT_ID} META_PROJECT_NAMESPACE)
+  endif()
+  _check_and_set_mandatory_meta_data(META_PROJECT_NAMESPACE PROJECT_NAMESPACE "Project namespace")
+  _check_and_set_mandatory_meta_data(META_PROJECT_NAMESPACE ${PROJECT_ID}_PROJECT_NAMESPACE "Project namespace")
 
   # Version major
   _check_and_set_mandatory_meta_data(META_VERSION_MAJOR VERSION_MAJOR "Project major version")
@@ -161,6 +168,7 @@ function(ProjectMetaReport)
   message(STATUS "PROJECT_ID: ${PROJECT_ID}")
   message(STATUS "PROJECT_NAME: ${PROJECT_NAME}")
   message(STATUS "PROJECT_DESCRIPTION: ${PROJECT_DESCRIPTION}")
+  message(STATUS "PROJECT_NAMESPACE: ${PROJECT_NAMESPACE}")
   message(STATUS "AUTHOR_ORGANIZATION: ${AUTHOR_ORGANIZATION}")
   message(STATUS "AUTHOR_DOMAIN: ${AUTHOR_DOMAIN}")
   message(STATUS "AUTHOR_MAINTAINER: ${AUTHOR_MAINTAINER}")
