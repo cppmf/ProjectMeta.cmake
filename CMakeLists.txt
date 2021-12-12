@@ -13,6 +13,7 @@
 #         PROJECT_DESCRIPTION: project description
 #         PROJECT_NAMESPACE: project namespace
 #         PROJECT_COPYRIGHT: project copyright
+#         PROJECT_URL: project url
 #         AUTHOR_ORGANIZATION : project organisation
 #         AUTHOR_DOMAIN: project domain url
 #         AUTHOR_MAINTAINER: project maintainer
@@ -34,7 +35,7 @@ function(ProjectMeta)
   # Option overrides
   set(options)
   set(oneValueArgs
-        PROJECT_ID PROJECT_NAME PROJECT_DESCRIPTION PROJECT_NAMESPACE PROJECT_COPYRIGHT
+        PROJECT_ID PROJECT_NAME PROJECT_DESCRIPTION PROJECT_NAMESPACE PROJECT_COPYRIGHT PROJECT_URL
         AUTHOR_ORGANIZATION AUTHOR_DOMAIN AUTHOR_MAINTAINER
         VERSION_MAJOR VERSION_MINOR VERSION_PATCH VERSION_REVISION VERSION VERSION_NAME)
   set(multiValueArgs)
@@ -100,13 +101,19 @@ function(ProjectMeta)
   _check_and_set_mandatory_meta_data(META_PROJECT_NAMESPACE PROJECT_NAMESPACE "Project namespace")
   _check_and_set_mandatory_meta_data(META_PROJECT_NAMESPACE ${PROJECT_ID}_PROJECT_NAMESPACE "Project namespace")
 
-
   # Project COPYRIGHT
   if(NOT DEFINED META_PROJECT_COPYRIGHT)
     string(TOLOWER ${META_PROJECT_ID} META_PROJECT_COPYRIGHT)
   endif()
   _check_and_set_mandatory_meta_data(META_PROJECT_COPYRIGHT PROJECT_COPYRIGHT "Project copyright")
   _check_and_set_mandatory_meta_data(META_PROJECT_COPYRIGHT ${PROJECT_ID}_PROJECT_COPYRIGHT "Project copyright")
+
+  # Project url
+  if(NOT DEFINED META_PROJECT_URL)
+    string(TOLOWER ${META_PROJECT_ID} META_PROJECT_URL)
+  endif()
+  _check_and_set_mandatory_meta_data(META_PROJECT_URL PROJECT_URL "Project url")
+  _check_and_set_mandatory_meta_data(META_PROJECT_URL ${PROJECT_ID}_PROJECT_URL "Project url")
 
   # Version major
   _check_and_set_mandatory_meta_data(META_VERSION_MAJOR VERSION_MAJOR "Project major version")
@@ -187,6 +194,7 @@ function(ProjectMetaReport)
   _output_var(${PROJECT_ID}_PROJECT_DESCRIPTION)
   _output_var(${PROJECT_ID}_PROJECT_NAMESPACE)
   _output_var(${PROJECT_ID}_PROJECT_COPYRIGHT)
+  _output_var(${PROJECT_ID}_PROJECT_URL)
   _output_var(${PROJECT_ID}_AUTHOR_ORGANIZATION)
   _output_var(${PROJECT_ID}_AUTHOR_DOMAIN)
   _output_var(${PROJECT_ID}_AUTHOR_MAINTAINER)

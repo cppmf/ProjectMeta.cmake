@@ -79,6 +79,7 @@ After calling ProjectMeta function, the following variables will be set
  -  | PROJECT_DESCRIPTION | project description
  -  | PROJECT_NAMESPACE | project namespace
  -  | PROJECT_COPYRIGHT | project copyright
+ -  | PROJECT_URL | project url
  -  | AUTHOR_ORGANIZATION | project organization
  -  | AUTHOR_DOMAIN | project domain url
  -  | AUTHOR_MAINTAINER | project maintainer

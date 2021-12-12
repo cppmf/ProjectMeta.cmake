@@ -18,16 +18,12 @@ CPMAddPackage(NAME ProjectMeta.cmake SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
 # Project configuration
 # ---------------------------------------------------------------------------- #
 ProjectMeta(
-  # Name of the project
   PROJECT_NAME "Test-App"
-  # Project description
   PROJECT_DESCRIPTION "Test project for ProjectMeta.cmake"
-  # Major version
+  PROJECT_URL "https://github.com/cppmf/ProjectMeta.cmake"
+
   VERSION_MAJOR 1
-  # Minor version
   VERSION_MINOR 0
-  # Patch version
-  # VERSION_PATCH 0
 )
 
 
