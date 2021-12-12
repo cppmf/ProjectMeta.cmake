@@ -54,6 +54,8 @@ parameter | description
 PROJECT_ID | project identifier
 PROJECT_NAME | project name
 PROJECT_DESCRIPTION | project description
+PROJECT_NAMESPACE | project namespace
+PROJECT_COPYRIGHT | project copyright
 AUTHOR_ORGANIZATION | project
 AUTHOR_DOMAIN | project domain url
 AUTHOR_MAINTAINER | project maintainer
@@ -75,6 +77,8 @@ After calling ProjectMeta function, the following variables will be set
 [*] | PROJECT_NAME | project name
 [C] | PROJECT_NAME_LOWER | project name in lower case
  -  | PROJECT_DESCRIPTION | project description
+ -  | PROJECT_NAMESPACE | project namespace
+ -  | PROJECT_COPYRIGHT | project copyright
  -  | AUTHOR_ORGANIZATION | project organization
  -  | AUTHOR_DOMAIN | project domain url
  -  | AUTHOR_MAINTAINER | project maintainer
