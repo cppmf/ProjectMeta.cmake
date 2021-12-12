@@ -11,6 +11,8 @@
 #   [C]   PROJECT_ID :
 #   [*]   PROJECT_NAME: project name
 #         PROJECT_DESCRIPTION: project description
+#         PROJECT_NAMESPACE: project namespace
+#         PROJECT_COPYRIGHT: project copyright
 #         AUTHOR_ORGANIZATION : project organisation
 #         AUTHOR_DOMAIN: project domain url
 #         AUTHOR_MAINTAINER: project maintainer
@@ -32,7 +34,7 @@ function(ProjectMeta)
   # Option overrides
   set(options)
   set(oneValueArgs
-        PROJECT_ID PROJECT_NAME PROJECT_DESCRIPTION PROJECT_NAMESPACE
+        PROJECT_ID PROJECT_NAME PROJECT_DESCRIPTION PROJECT_NAMESPACE PROJECT_COPYRIGHT
         AUTHOR_ORGANIZATION AUTHOR_DOMAIN AUTHOR_MAINTAINER
         VERSION_MAJOR VERSION_MINOR VERSION_PATCH VERSION_REVISION VERSION VERSION_NAME)
   set(multiValueArgs)
@@ -96,6 +98,14 @@ function(ProjectMeta)
   endif()
   _check_and_set_mandatory_meta_data(META_PROJECT_NAMESPACE PROJECT_NAMESPACE "Project namespace")
   _check_and_set_mandatory_meta_data(META_PROJECT_NAMESPACE ${PROJECT_ID}_PROJECT_NAMESPACE "Project namespace")
+
+
+  # Project COPYRIGHT
+  if(NOT DEFINED META_PROJECT_COPYRIGHT)
+    string(TOLOWER ${META_PROJECT_ID} META_PROJECT_COPYRIGHT)
+  endif()
+  _check_and_set_mandatory_meta_data(META_PROJECT_COPYRIGHT PROJECT_COPYRIGHT "Project copyright")
+  _check_and_set_mandatory_meta_data(META_PROJECT_COPYRIGHT ${PROJECT_ID}_PROJECT_COPYRIGHT "Project copyright")
 
   # Version major
   _check_and_set_mandatory_meta_data(META_VERSION_MAJOR VERSION_MAJOR "Project major version")
@@ -169,6 +179,7 @@ function(ProjectMetaReport)
   message(STATUS "PROJECT_NAME: ${PROJECT_NAME}")
   message(STATUS "PROJECT_DESCRIPTION: ${PROJECT_DESCRIPTION}")
   message(STATUS "PROJECT_NAMESPACE: ${PROJECT_NAMESPACE}")
+  message(STATUS "PROJECT_COPYRIGHT: ${PROJECT_COPYRIGHT}")
   message(STATUS "AUTHOR_ORGANIZATION: ${AUTHOR_ORGANIZATION}")
   message(STATUS "AUTHOR_DOMAIN: ${AUTHOR_DOMAIN}")
   message(STATUS "AUTHOR_MAINTAINER: ${AUTHOR_MAINTAINER}")
